@@ -1,0 +1,33 @@
+openapi: '3.0.2'
+info:
+  title: Photo Management
+  version: '1.0.0'
+paths:
+  /photo:
+    post:
+      responses:
+        '201':
+          description: Succes Response
+          content:
+            application/json:
+              schema:
+        '422':
+          description: ERROR
+    get:
+      responses:
+        '201':
+          description: OK
+        '422':
+          description: ERROR
+  /photos:
+    get:
+      responses:
+        '201':
+          description: OK
+        '422':
+          description: ERROR
+  /photo/{photo_id}:
+    get:
+    put: 
+    delete: 
+    
