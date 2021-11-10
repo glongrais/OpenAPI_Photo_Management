@@ -5,29 +5,177 @@ info:
 paths:
   /photo:
     post:
+      description: Create a new photo
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Photo'
       responses:
-        '201':
-          description: Succes Response
-          content:
-            application/json:
-              schema:
-        '422':
-          description: ERROR
-    get:
-      responses:
-        '201':
-          description: OK
-        '422':
-          description: ERROR
+        201:
+          $ref: '#/components/responses/201'
+        422:
+          $ref: '#/components/responses/422'
+        default:
+          $ref: '#/components/responses/Default'
+
   /photos:
     get:
       responses:
-        '201':
-          description: OK
-        '422':
-          description: ERROR
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photos'
+        404:
+          $ref: '#/components/responses/404'
+        default:
+          $ref: '#/components/responses/Default'
+
   /photo/{photo_id}:
     get:
+      parameters: 
+        - in: path
+          name: photo_id
+          required: true
+          schema:
+            type: string
+      responses:
+        200: 
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        404:
+          $ref: '#/components/responses/404'
+        default:
+          $ref: '#/components/responses/Default'
+
     put: 
+      parameters: 
+        - in: path
+          name: photo_id
+          required: true
+          schema:
+            type: string
+      description: Update a photo
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Photo'
+      responses:
+        200: 
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        404:
+          $ref: '#/components/responses/404'
+        422:
+          $ref: '#/components/responses/422'
+        default:
+          $ref: '#/components/responses/Default'
     delete: 
+      parameters: 
+        - in: path
+          name: photo_id
+          required: true
+          schema:
+            type: string
+      responses:
+        204: 
+          description: No content
+        404:
+          $ref: '#/components/responses/404'
+        default:
+          $ref: '#/components/responses/Default'
+
+components:
+  schemas:
+    Photo:
+      type: object
+      required: 
+        - id, name
+      properties:
+        id:
+          type: string
+          readOnly: true
+          example: 3
+        name: 
+          type: string
+          maxLength: 20
+          example: Photo_3
+        description: 
+          type:  string
+          maxLength: 100
+          example: My dog selfie
+        access:
+          type: string
+          example: public
+          enum: [public, private]
+        location:
+          type: string
+          example: Skopje
+        file:
+          type: string
+          example: teddy_selfie.jpg
+        created_date:
+          type: string
+          format: date-time
+          example: 1996-08-23T17:32:28Z
+        modified_date:
+          type: string
+          format: date-time
+          example: 2020-12-27T23:45:28Z
     
+    Photos:
+      type: array
+      items:
+        $ref: '#/components/schemas/Photo'
+    Success:
+      type: object
+      properties:
+        message: 
+          type: string
+          example: Photo successfully created
+        id:
+          type: string
+          example: 3
+    Error:
+      type: object
+      properties:
+        message: 
+          type: string
+          example: Error
+  
+  responses:
+    201:
+      description: Success Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Success'
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    422:
+      description: Unprocessable entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Default:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
