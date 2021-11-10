@@ -13,9 +13,9 @@ paths:
             schema:
               $ref: '#/components/schemas/Photo'
       responses:
-        201:
+        '201':
           $ref: '#/components/responses/201'
-        422:
+        '422':
           $ref: '#/components/responses/422'
         default:
           $ref: '#/components/responses/Default'
@@ -30,13 +30,13 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Ok
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Photos'
-        404:
+        '404':
           $ref: '#/components/responses/404'
         default:
           $ref: '#/components/responses/Default'
@@ -50,13 +50,13 @@ paths:
           schema:
             type: string
       responses:
-        200: 
+        '200': 
           description: Ok
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Photo'
-        404:
+        '404':
           $ref: '#/components/responses/404'
         default:
           $ref: '#/components/responses/Default'
@@ -76,15 +76,15 @@ paths:
             schema:
               $ref: '#/components/schemas/Photo'
       responses:
-        200: 
+        '200': 
           description: Ok
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        404:
+        '404':
           $ref: '#/components/responses/404'
-        422:
+        '422':
           $ref: '#/components/responses/422'
         default:
           $ref: '#/components/responses/Default'
@@ -96,9 +96,9 @@ paths:
           schema:
             type: string
       responses:
-        204: 
+        '204': 
           description: No content
-        404:
+        '404':
           $ref: '#/components/responses/404'
         default:
           $ref: '#/components/responses/Default'
@@ -108,7 +108,12 @@ components:
     Photo:
       type: object
       required: 
-        - id, name
+        - name
+        - access
+        - location
+        - file
+        - created_date
+        - modified_date
       properties:
         id:
           type: string
@@ -153,7 +158,7 @@ components:
           example: 'Photo successfully created'
         id:
           type: string
-          example: 3
+          example: '3'
     Error:
       type: object
       properties:
