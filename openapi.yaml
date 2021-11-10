@@ -113,33 +113,33 @@ components:
         id:
           type: string
           readOnly: true
-          example: 3
+          example: '3'
         name: 
           type: string
           maxLength: 20
-          example: Photo_3
+          example: 'Photo_3'
         description: 
           type:  string
           maxLength: 100
-          example: My dog selfie
+          example: 'My dog selfie'
         access:
           type: string
-          example: public
-          enum: [public, private]
+          example: 'public'
+          enum: ['public', 'private']
         location:
           type: string
-          example: Skopje
+          example: 'Skopje'
         file:
           type: string
-          example: teddy_selfie.jpg
+          example: 'teddy_selfie.jpg'
         created_date:
           type: string
           format: date-time
-          example: 1996-08-23T17:32:28Z
+          example: '1996-08-23T17:32:28Z'
         modified_date:
           type: string
           format: date-time
-          example: 2020-12-27T23:45:28Z
+          example: '2020-12-27T23:45:28Z'
     
     Photos:
       type: array
@@ -150,7 +150,7 @@ components:
       properties:
         message: 
           type: string
-          example: Photo successfully created
+          example: 'Photo successfully created'
         id:
           type: string
           example: 3
@@ -159,7 +159,7 @@ components:
       properties:
         message: 
           type: string
-          example: Error
+          example: 'Error'
   
   responses:
     201:
