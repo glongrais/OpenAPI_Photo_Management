@@ -5,10 +5,10 @@
 Basic photo management API created with OpenAPI 3 that serve basic CRUD via HTTP
 
 ### Table of Contents  
-[Ressources](#ressouces)  
+[Ressources](#Ressouces)  
 [Requests](#Requests)  
 [Schemas](#Schemas)   
-[Example](#exemple)   
+[Example](#Example)   
 
 
 ## Ressources
