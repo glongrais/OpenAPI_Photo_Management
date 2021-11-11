@@ -10,7 +10,7 @@ Basic photo management API created with OpenAPI 3 that serve basic CRUD via HTTP
 [Schemas](#Schemas)   
 [Example](#exemple)   
 
-<a name="ressources"></a>
+
 ## Ressources
 
 * OpenAPI specification can be found [here](https://swagger.io/specification/).
@@ -61,7 +61,7 @@ Basic photo management API created with OpenAPI 3 that serve basic CRUD via HTTP
     | --- | --- | --- |
     | message | string | - |
 
-<a name="example"></a>
+
 ## Example
 
 `Photo` schema:
