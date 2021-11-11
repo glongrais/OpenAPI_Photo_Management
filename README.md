@@ -4,6 +4,13 @@
 
 Basic photo management API created with OpenAPI 3 that serve basic CRUD via HTTP
 
+### Table of Contents  
+[Ressources](#ressouces)  
+[Requests](#Requests)  
+[Schemas](#Schemas)   
+[Example](#exemple)   
+
+<a name="ressources"></a>
 ## Ressources
 
 * OpenAPI specification can be found [here](https://swagger.io/specification/).
@@ -27,3 +34,48 @@ Basic photo management API created with OpenAPI 3 that serve basic CRUD via HTTP
     | Attribute | Type | Conditions |
     | --- | --- | --- |
     | id | string | `readOnly: true` |
+    | name | string | `required:true`</br>`maxlenght: 20` |
+    | description | string | `maxlenght: 100` |
+    | access | string | `required:true`</br>`enum: [public, private]` |
+    | location | string | `required:true` |
+    | file | string | `required:true` |
+    | created_date | string | `required:true`</br>`format: date-time` |
+    | updated_date | string | `required:true`</br>`format: date-time` |
+
+* `Photos`
+
+    | Attribute | Type | Description |
+    | --- | --- | --- |
+    | [Photo] | array | An array of photos |
+
+* `Success`
+
+    | Attribute | Type | Conditions |
+    | --- | --- | --- |
+    | message | string | - |
+    | id | string | - |
+
+* `Error`
+
+    | Attribute | Type | Conditions |
+    | --- | --- | --- |
+    | message | string | - |
+
+<a name="example"></a>
+## Example
+
+`Photo` schema:
+
+```json
+{
+  "name": "Photo_3",
+  "description": "My dog selfie",
+  "access": "public",
+  "location": "Skopje",
+  "file": "teddy_selfie.jpg",
+  "created_date": "1996-08-23T17:32:28Z",
+  "modified_date": "2020-12-27T23:45:28Z"
+}
+```
+
+
